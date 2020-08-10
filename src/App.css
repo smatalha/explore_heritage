@@ -1,29 +1,86 @@
 .App {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+footer.footer {
+    margin-top: 100px;
+    display: inline-flex;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.wishlist_empty_image {
+    margin-bottom: 2.5rem;
+    width: 100%;
+    height: min-content;
 }
-/* .navbar {
-  background-color: aliceblue;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-around;
+button {
+    font-size: .875rem;
+    line-height: 1.25rem;
+    background-color: #1593ff;
+    border-width: 0;
+    color: #fff;
+    outline: none;
+    white-space: nowrap;
+    height: 44px;
+    line-height: 44px;
+    border-radius: 500px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    min-width: 320px;
+    background: #fff;
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    line-height: 1.4285em;
+    color: rgba(0,0,0,.87);
+    font-smoothing: antialiased;
+}
+body {
+    font-family: Helvetica,Arial,sans-serif;
+}
+:root {
+    --font-sizes: lg, 2x, 3x, 4x, 5x;
+    --font-sizes-values: 1.33333333em, 2em, 3em, 4em, 5em;
+    --rotates: 30, 60, 90, 180, 270;
+}
+/* body ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
 } */
+/* .header-banner {
+    height: 160px;
+    position: relative;
+} */
+/* .header-banner-highlight {
+    float: right;
+    top: 0;
+    right: 0;
+    position: absolute;
+    overflow: hidden;
+    width: auto;
+} */
+/* .ym-wrapper, .page_margins {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1960px;
+    min-width: 280px;
+    background: #fff;
+    position: relative;
+} */
+img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimizeQuality;
+}
+fieldset, img {
+    border: 0 solid;
+}
+img {
+    border: 0;
+}
 .navbar {
     background-color: aliceblue;
-    min-height: 20px;
-    padding: 5px;
-    display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-around;
@@ -32,27 +89,181 @@
     text-shadow: 1px 1px rgb(0, 110, 129);
     color: darkblue;
     cursor: grab;
+    
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+    padding: 7px 25px;
+    border-bottom: 1px solid #dcdcdc;
+    width: 100%;
+    height: 60px;
+
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+
+    /* background-color: #fff;
+    z-index: 100;
+    margin: 0!important;
+    width: 100%!important; */
 }
-/* .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-} */
 
-/* .App-link {
-  color: #61dafb;
-} */
+div {
+    display: block;
+}
+.block2__grid {
+    display: inline-grid;
+    padding: 1rem;
+    /* grid-auto-rows: 270px; */
+    grid-gap: 25px;
+    grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
+    margin-top: 25px;
+}
+.tour-card {
+    border-radius: 6px;
+    color: #fff;
+    position: relative;
+}
+.tour-card__image {
+    border-radius: 6px;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+    -webkit-transition: .8s ease-out;
+    -o-transition: .8s ease-out;
+    transition: .8s ease-out;
+    height: 100%;
+}
+.tour-card__description-wrapper {
+    -ms-flex-align: end;
+    align-items: flex-end;
+    -webkit-backdrop-filter: blur(1px);
+    backdrop-filter: blur(3px);
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    bottom: 0;
+    cursor: pointer;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+    position: absolute;
+    -webkit-transition: .8s ease;
+    -o-transition: .8s ease;
+    transition: .8s ease;
+    width: 100%;
+}
+.tour-card__description {
+    background-color: rgba(0,0,0,.4);
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding: 20px 15px 0;
+    width: 100%;
+    z-index: 1;
+}
+.tour-card__title {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    text-shadow: 0 2px 4px rgba(0,0,0,.73);
+}
+.tour-card_inscribed {
+    color: #fff;
+    font-size: 14px;
+    text-shadow: 0 2px 4px rgba(0,0,0,.73);
+    margin-top: 6px;
+}
 
-/* @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
+.tour-card__actions {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin-bottom: 0;
+    height: 38px;
+    /* opacity: 0; */
+    padding-top: 15px;
+    -webkit-transition: .8s ease;
+    -o-transition: .8s ease;
+    transition: .8s ease;
+    -webkit-transition-property: max-height,opacity,margin-bottom;
+    -o-transition-property: max-height,opacity,margin-bottom;
+    transition-property: max-height,opacity,margin-bottom;
+}
+.tour-card__actions a, .tour-card__actions button {
+    background-color: transparent;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    -ms-flex: 50%;
+    flex: 50%;
+    font-size: 16px;
+    height: 36px;
+    letter-spacing: 0;
+    line-height: 19px;
+    padding: 8px 0 9px;
+    -webkit-transition: background-color .2s ease-in-out,border-color .2s ease-in-out;
+    -o-transition: background-color .2s ease-in-out,border-color .2s ease-in-out;
+    transition: background-color .2s ease-in-out,border-color .2s ease-in-out;
+}
+
+button {
+    cursor: pointer;
+}
+
+[type=reset], [type=submit], button, html [type=button] {
+    -webkit-appearance: button;
+}
+
+button, select {
+    text-transform: none;
+}
+button, input {
+    overflow: visible;
+}
+button, input, optgroup, select, textarea {
+    font-family: sans-serif;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+}
+*, :after, :before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+button {
+    appearance: button;
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: -internal-light-dark(buttontext, rgb(170, 170, 170));
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    background-color: -internal-light-dark(rgb(239, 239, 239), rgb(74, 74, 74));
+    box-sizing: border-box;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(195, 195, 195));
+    border-image: initial;
+}
+
+.tour-card__actions a:not(:first-child), .tour-card__actions button:not(:first-child) {
+    margin-left: 10px;
+}
