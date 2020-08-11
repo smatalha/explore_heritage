@@ -1,23 +1,12 @@
-import React from 'react';
-import SitesCollection from '../Components/SitesCollection';
-class SitesContainer extends React.Component {
-    state = { sites: [] }
+// import React from 'react';
+// import SitesCollection from '../Components/SitesCollection';
+// const SitesContainer = props => {
+//         console.log(props);
+//     return (
+//         <div>
+//             <SitesCollection sites={props.sites}/>
+//         </div>
+//         );
+// }
 
-    componentDidMount () {
-        fetch('http://localhost:3000/sites')
-        .then(res => res.json())
-        .then(sites => {
-            this.setState({ sites })
-        })
-    }
-    render() {
-        // console.log(this.state);
-        return (
-            <div>
-                <SitesCollection sites={this.state.sites}/>
-            </div>
-         );
-    }
-}
-
-export default SitesContainer;
+// export default SitesContainer;

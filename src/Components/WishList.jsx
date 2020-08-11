@@ -12,7 +12,7 @@ class WishList extends React.Component {
                 <div className='wishlist_empty_text'>
                 <h2>Your Wish List Is empty!</h2> 
                 <p> Save activities to your wishlist by clicking on the heart icon. </p>
-                <button>Find Heritage to explore</button>
+                <button className='wish_button'>Find Heritage to explore</button>
                 </div>
             </div>
           );

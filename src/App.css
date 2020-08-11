@@ -1,6 +1,258 @@
 .App {
   text-align: center;
 }
+.content {
+    line-height: 145%;
+    background: #fff;
+    margin-bottom: 10px;
+    padding: 20px;
+    word-wrap: break-word;
+}
+.content h1 {
+    font-size: 330%;
+    clear: both;
+    margin: .2em 0em .4em 0;
+    line-height: 1.2em;
+    color: #666;
+}
+.ym-grid {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    list-style-type: none;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+ * {
+    margin: 0;
+    padding: 0;
+}
+.ym-g66 {
+    width: 66.666%;
+}
+.ym-gl {
+    float: left;
+    margin: 0;
+}
+.readable {
+    font-size: 125%;
+    line-height: 145%;
+}
+.ym-gbox-left {
+    padding: 0 5px 0 0;
+}
+.ym-gbox-left {
+    padding: 0 10px 0 0;
+}
+.box {
+    background-color: #e0e0e0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    overflow: hidden;
+}
+.tab-content-show {
+    display: block;
+}
+.tab-content {
+    position: relative;
+    display: block;
+}
+.bordered {
+    border: 2px #eee solid;
+    border: 2px rgba(255, 255, 255, 1) solid;
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+}
+.icaption {
+    line-height: 1.4em;
+    width: 240px;
+}
+.site_image {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    border: 0;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimizeQuality;
+    width: 750px;
+}
+element.style {
+    width: 100%;
+}
+.icaption strong, .icaption_description, .icaption_right strong, .icaption_left strong {
+    font-weight: 400;
+    font-size: .9em;
+    line-height: 1.4em;
+    margin-top: -6px;
+    width: max-content;
+    justify-content: center;
+    display: block;
+    background: #000;
+    color: #fff;
+    padding: 6px;
+}
+form {
+    display: block;
+    margin-top: 0em;
+}
+.searchbox-big {
+    text-align: center;
+}
+.searchbox, .general_search, .general_search input, .searchbox select, .searchbox input, .searchbox td, .searchbox p, .pager {
+    color: #444;
+}
+.searchbox, .advanced_search {
+    background-color: #e0e0e0;
+    border-bottom: 1px solid #d0d0d0;
+    width: auto;
+    margin: 0 0 10px 0;
+    padding: 10px;
+    position: relative;
+}
+.searchbox-big .searchbox-big-in {
+    padding-top: 5px;
+    padding-bottom: 0;
+    display: inline-block;
+    text-align: left;
+}
+ .button input, .searchbox .checkbox input, .buttons, .wform .alert div.check {
+    width: auto;
+}
+.buttons .button_padding, .buttons .medium_button {
+    padding: 10px;
+}
+.buttons .plain_button {
+    background-image: none;
+    background-color: #00a0db;
+    border: none;
+    color: #fff;
+}
+.buttons button {
+    overflow: visible;
+    width: auto;
+    line-height: 18px;
+}
+.buttons a, .buttons button, .buttons .button {
+    background-color: #f9f9f9;
+    background-repeat: repeat-x;
+    background-image: -khtml-gradient(linear, left top, left bottom, from(#F9F9F9), to(#eeeeee));
+    background-image: -moz-linear-gradient(#F9F9F9, #eeeeee);
+    background-image: -ms-linear-gradient(#F9F9F9, #eeeeee);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #F9F9F9), color-stop(100%, #eeeeee));
+    background-image: -webkit-linear-gradient(#F9F9F9, #eeeeee);
+    background-image: -o-linear-gradient(#F9F9F9, #eeeeee);
+    background-image: linear-gradient(#F9F9F9, #eeeeee);
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    width: auto;
+    padding: 4px 5px 4px 5px;
+    color: #555;
+    box-sizing: border-box;
+}
+button, input, textarea {
+    padding: 4px;
+    border: 1px solid #b5b8c8;
+    box-sizing: border-box;
+}
+button {
+    appearance: button;
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: -internal-light-dark(buttontext, rgb(170, 170, 170));
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    background-color: -internal-light-dark(rgb(239, 239, 239), rgb(74, 74, 74));
+    box-sizing: border-box;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(195, 195, 195));
+    border-image: initial;
+}
+strong {
+    font-weight: 700;
+}
+strong {
+    font-weight: bold;
+}
+.icaption {
+    line-height: 1.4em;
+    width: 240px;
+}
+.content h5 {
+    font-size: 160%;
+    line-height: 1.3em;
+    margin: .3em 0 .5em 0;
+}
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.ym-gr {
+    margin: 0;
+    float: right;
+    margin: 0 0 0 -5px;
+}
+.ym-g33 {
+    width: 33.333%;
+}
+.ym-gbox-right {
+    padding: 0 0 0 5px;
+}
+.ym-gbox-right {
+    padding: 0 0 0 10px;
+}
+.alternate div:nth-child(odd) {
+    background: #e4e4e4;
+}
+.alternate div {
+    padding: 4px;
+}
+.content .box {
+    background-color: #eee;
+}
+.gmap, #map {
+    position: relative;
+    z-index: 10;
+    margin-bottom: 10px;
+}
+#esriapp {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
 footer.footer {
     margin-top: 100px;
     display: inline-flex;
@@ -10,7 +262,7 @@ footer.footer {
     width: 100%;
     height: min-content;
 }
-button {
+.wish_button{
     font-size: .875rem;
     line-height: 1.25rem;
     background-color: #1593ff;
@@ -72,12 +324,10 @@ body {
 img {
     image-rendering: -webkit-optimize-contrast;
     image-rendering: optimizeQuality;
+    border: 0;
 }
 fieldset, img {
     border: 0 solid;
-}
-img {
-    border: 0;
 }
 .navbar {
     background-color: aliceblue;

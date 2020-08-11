@@ -14,13 +14,13 @@ class Auth extends React.Component {
 
     handleChange = e => this.setState({ [e.target.name]: e.target.value })
 
-    // handleSubmit = e => {
-    //     const { isNewUser, password, confirmation, username } = this.state;
-    //     isNewUser
-    //         ? password === confirmation ? this.props.history.push('/pets') : alert('try again!')
-    //         : this.props.history.push('/pets')
-    //     /** TODO: when the user logs in, move them to our /pets page  */
-    // }
+    handleSubmit = e => {
+        const { isNewUser, password, confirmation, /*username*/ } = this.state;
+        isNewUser
+            ? password === confirmation ? this.props.history.push('/pets') : alert('try again!')
+            : this.props.history.push('/sites')
+        /** TODO: when the user logs in, move them to our /pets page  */
+    }
 
     renderLogin = () => {
         const { username, password } = this.state;
