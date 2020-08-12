@@ -1,37 +1,41 @@
 import React from 'react';
 class SitePage extends React.Component {
     state = {
-        currentPage: null
+        currentPage: null,
     }
-
     componentDidMount () {
         // console.log(this.props.match.params.id);
-
+        let siteId = this.props.match.params.id
+        fetch(`http://localhost:3000/sites/${siteId}`)
+        .then(res=> res.json())
+        .then(currentPage=> {
+            this.setState({ currentPage })
+        })
+        
     }
     render() {
-        let siteId = this.props.match.params.id
-        let siteToDisplay = this.props.sites.find(site => (site.id === parseInt(siteId)))
-        console.log(siteToDisplay);
-        // const { image_url, name, location, id, push } = siteToDisplay
+        // console.log(this.props);
+
+        let site = this.state.currentPage
         return (
             <div className='content'>
-                {siteToDisplay
+                {site
                     ? (
                         <>
-                            <h1> {siteToDisplay.name}</h1>
+                            <h1> {site.name} </h1>
                             <div className='ym-grid linearize-level-1'>
                                 <div className='ym-g66 ym-gl'>
                                     <div className='ym-gbox-left readable'>
                                         <div className='box'>
                                             <div id='contentdes_en' className='tab-content tab-content-show'>
-                                                <h6> {siteToDisplay.name}</h6>
-                                                <p>{ siteToDisplay.justification }</p>
+                                                <h6> {site.name} </h6>
+                                                <p>{ site.justification }</p>
                                             </div>
                                         </div>
                                         <div className='box'>
                                             <div className='icaption bordered'>
                                                 <div className='site_image'>
-                                                <img src={siteToDisplay.image_url} alt={siteToDisplay.name} />
+                                                <img src={site.image_url} alt={site.name} />
                                                 </div>
                                                 <strong className='description'>Grand Canyon National Park (United States of America) © Evergreen</strong>
                                             </div>
@@ -39,15 +43,18 @@ class SitePage extends React.Component {
                                         <div className='box'>
                                             <div>
                                                 <h5> Statement of Significance </h5>
-                                                <p>{siteToDisplay.short_description}</p>
+                                                <p>{site.short_description}</p>
                                                 <div className='site_page'>
-                                                    <button> 10 Like</button>
-                                                    <button /*onClick={() => push(`/sites/${id}`)}*/>Visit Me!</button>
+                                                    {/* <span role="img" aria-label="" >🇺 */}
+                                                    <button onClick={this.handleChangeVisited}
+                                                        handleVisited={this.handleVisited}> {site.visited ? "Visited" : 'Unvisited' } </button>
+                                                    {/* </span> */}
+                                                    <button /*onClick={() => push(`/sites/${id}`)}*/>Wish List</button>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className='box'>
-                                            
+                                            <form action=""></form>
                                         </div>
                                     </div>
                                 </div>
@@ -56,18 +63,22 @@ class SitePage extends React.Component {
                                         <div className='box'>
                                             <div className='alternate'>
                                                 <div>
-                                                    <span> 🇺🇸
-                                                        <strong>United States of America</strong> 
-                                                    </span>
+                                                        <span role="img" aria-label="flag">🇺🇸
+                                                        <strong> {site.country.name} </strong> 
+                                                        </span>
                                                 </div>
-                                                <div>{siteToDisplay.location}</div>
+                                                <div>{site.location}</div>
                                                 <div>
                                                     <strong>Date of Inscription:</strong> 
-                                                    {siteToDisplay.date_inscribed}
+                                                    {site.date_inscribed}
                                                 </div>
+                                                <span role="img" aria-label="" >🇺
+                                                    <strong>Danger:</strong> 
+                                                    {site.danger ? "✅" : "⚠️"}
+                                                </span>
                                             </div>
                                             <div className='box gmap'>
-                                                <div className id='esriapp'>
+                                                <div className='' id='esriapp'>
                                                     Google Map
                                                 </div>
                                             </div>
@@ -75,8 +86,8 @@ class SitePage extends React.Component {
                                     </div>
 
                                 </div>
-                                {/* <link rel="stylesheet" href={ siteToDisplay.http_url }/> */}
-                                {/* <a href={siteToDisplay.http_url}></a> */}
+                                {/* <link rel="stylesheet" href={ site.http_url }/> */}
+                                {/* <a href={site.http_url}></a> */}
                             </div>
                         </>
                         ) : (
@@ -87,5 +98,6 @@ class SitePage extends React.Component {
         );
     }
 }
+
 
 export default SitePage;

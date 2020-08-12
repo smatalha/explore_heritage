@@ -17,7 +17,7 @@ class Auth extends React.Component {
     handleSubmit = e => {
         const { isNewUser, password, confirmation, /*username*/ } = this.state;
         isNewUser
-            ? password === confirmation ? this.props.history.push('/pets') : alert('try again!')
+            ? password === confirmation ? this.props.history.push('/user') : alert('try again!')
             : this.props.history.push('/sites')
         /** TODO: when the user logs in, move them to our /pets page  */
     }

@@ -25,7 +25,40 @@ class App extends React.Component {
       })
   }
 
+  handleVisited = (id) => {
+    let updatedArr = this.state.sites.map(site => {
+      if (site.id === id) {
+        site.visited = !site.visited
+        return (site)
+      }
+      else { return site }
+    })
+    this.setState({
+      sites: updatedArr
+    })
+  }
+
+  handleChangeVisited = (id) => {
+    const options = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        visited: !this.props.visited
+      })
+    }
+
+    fetch(`http://localhost:3000/sites/${id}`, options)
+      .then(res => res.json())
+      .then(e => {
+        this.handleVisited(id)
+      })
+  };
+
   render() {
+    console.log(this.state.sites.id);
     return (
       <div className="App">
         <header className="App-header">
@@ -34,7 +67,10 @@ class App extends React.Component {
             <Switch>
                       <Route path='/login' component={Login} />
                       <Route path='/wishlist' component={WishList}/>
-                      <Route path='/sites/:id' render={(routerProps) => <SitePage sites={this.state.sites}{...routerProps} />} />
+                      <Route path='/sites/:id' render={(routerProps) => <SitePage sites={this.state.sites}{...routerProps}
+                      handleChangeVisited={this.handleChangeVisited} 
+                      handleVisited={this.handleVisited}
+                      />} />
                       <Route path='/sites' render={(routerProps) => <SitesCollection sites={this.state.sites}{...routerProps} />} />
                       {/* <Route path='/sites' render={() => <SitesContainer />} /> */}
                       <Route path='/about' render={() => <About />} />
