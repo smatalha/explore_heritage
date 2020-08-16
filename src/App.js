@@ -5,28 +5,72 @@ import { Route, Switch } from "react-router-dom";
 import About from './Components/About';
 import Home from './Components/Home';
 // import Header from './Components/Header';
-import Login from './Components/Auth';
+// import Login from './Components/Auth';
+import LoginForm from "./Components/LoginForm";
 import WishList from './Components/WishList';
 // import SitesContainer from './Containers/SitesContainer';
 import SitePage from './Components/SitePage';
 import SitesCollection from './Components/SitesCollection';
+// import Profile from './Components/Profile';
+import UsersContainer from './Containers/UsersContainer';
+// import Footer from './Footer';
 
 
 
 class App extends React.Component {
 
-  state = { sites: [] }
+  state = {
+     sites: [],
+     users: []
+    }
 
   componentDidMount() {
+    this.fetchSites()
+    this.fetchUsers()
+  }
+  fetchSites = () => {
     fetch('http://localhost:3000/sites')
       .then(res => res.json())
       .then(sites => {
         this.setState({ sites })
       })
   }
-
+  fetchUsers = () => {
+    fetch('http://localhost:3000/users')
+      .then(res => res.json())
+      .then(users => {
+        this.setState({ users })
+      })
+  }
+  // deleteComment = id => {
+  //   let newArr = this.state.comments.filter(comment => { return comment.id !== id })
+  //   this.setState({
+  //     comments: newArr
+  //   })
+  // };
+  removeComment = commentId => {
+    fetch(`http://localhost:3000/comments/${commentId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then((data) => {
+        console.log(data);
+        // let newSiteArray = this.state.sites.map(site => {
+        //   if (site.id === this.state.currentSite) {
+        //     let newComments = site.comments.filter(comment => comment.id !== commentId)
+        //     return { ...site, comments: newComments }
+        //   }
+        //   return site
+        // })
+        // this.setState({ sites: newSiteArray })
+      })
+  }
   handleVisited = (id) => {
-    let updatedArr = this.state.sites.map(site => {
+    let updatedSite = this.state.sites.map(site => {
       if (site.id === id) {
         site.visited = !site.visited
         return (site)
@@ -34,11 +78,11 @@ class App extends React.Component {
       else { return site }
     })
     this.setState({
-      sites: updatedArr
+      sites: updatedSite
     })
   }
-
   handleChangeVisited = (id) => {
+    // let siteId = this.props.match.params.id
     const options = {
       method: 'PATCH',
       headers: {
@@ -54,35 +98,36 @@ class App extends React.Component {
       .then(res => res.json())
       .then(e => {
         this.handleVisited(id)
+        console.log(e);
       })
   };
 
   render() {
-    console.log(this.state.sites.id);
+    // console.log(this.state.users);
     return (
       <div className="App">
         <header className="App-header">
             <NavBar/>
             {/* <Header/> */}
             <Switch>
-                      <Route path='/login' component={Login} />
+                      <Route path='/login' component={LoginForm} />
                       <Route path='/wishlist' component={WishList}/>
                       <Route path='/sites/:id' render={(routerProps) => <SitePage sites={this.state.sites}{...routerProps}
-                      handleChangeVisited={this.handleChangeVisited} 
-                      handleVisited={this.handleVisited}
-                      />} />
+                      handleChangeVisited={this.props.handleChangeVisited} removeComment={this.removeComment} />} />
                       <Route path='/sites' render={(routerProps) => <SitesCollection sites={this.state.sites}{...routerProps} />} />
-                      {/* <Route path='/sites' render={() => <SitesContainer />} /> */}
+                      {/* <Route path='/users/:id' render={(routerProps) => <Profile users={this.state.users}{...routerProps} />} /> */}
+                      <Route path='/users' render={() => <UsersContainer users={this.state.users}/>} />
                       <Route path='/about' render={() => <About />} />
                       <Route path='/' component={Home} />
             </Switch>
-            <footer className='footer'>©2020 EXHeritage</footer>
+            {/* <footer className='footer'>©2020 EXHeritage</footer> */}
+            {/* <Footer/> */}
         </header>
       </div>
-     );
+    );
   }
 }
- 
+
 export default App;
 
 
