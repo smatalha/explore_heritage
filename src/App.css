@@ -1,5 +1,23 @@
 .App {
-  text-align: center;
+    text-align: center;
+}
+.footer {
+    margin-top: 30px;
+}
+.logo_image {
+    width: 5%;
+}
+.title {
+    font-size: 56px;
+    margin-bottom: 30px;
+}
+.already_user {
+    margin-bottom: 30px;
+}
+.ui.center.aligned.middle.grid {
+    /* background-image: url(https://c4.wallpaperflare.com/wallpaper/155/678/465/half-underwater-half-above-hd-wallpaper-wallpaper-preview.jpg); */
+    background-repeat: repeat-x;
+    background-color: azure;
 }
 .content {
     line-height: 145%;
@@ -174,7 +192,7 @@ button, input, textarea {
 }
 button {
     appearance: button;
-    -webkit-writing-mode: horizontal-tb !important;
+    /* -webkit-writing-mode: horizontal-tb !important; */
     text-rendering: auto;
     color: -internal-light-dark(buttontext, rgb(170, 170, 170));
     letter-spacing: normal;
@@ -287,7 +305,7 @@ body {
     font-size: 14px;
     line-height: 1.4285em;
     color: rgba(0,0,0,.87);
-    font-smoothing: antialiased;
+    /* font-smoothing: antialiased; */
 }
 body {
     font-family: Helvetica,Arial,sans-serif;
@@ -340,7 +358,6 @@ fieldset, img {
     text-shadow: 1px 1px rgb(0, 110, 129);
     color: darkblue;
     cursor: grab;
-    
     display: -ms-flexbox;
     display: flex;
     -ms-flex-pack: justify;
@@ -501,7 +518,7 @@ button, input, optgroup, select, textarea {
 }
 button {
     appearance: button;
-    -webkit-writing-mode: horizontal-tb !important;
+    /* -webkit-writing-mode: horizontal-tb !important; */
     text-rendering: auto;
     color: -internal-light-dark(buttontext, rgb(170, 170, 170));
     letter-spacing: normal;

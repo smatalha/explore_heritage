@@ -6,7 +6,7 @@ const NavBar = () => {
     return (
         <div className="navbar">
             <Link to="/">Home</Link>
-            <Link to="/wishlist">Wish List</Link>
+            {/* <Link to="/wishlist">Wish List</Link> */}
             <Link to="/sites">Heritages</Link>
             <Link to="/users/:id">Profile</Link>
             <Link to="/login">Login</Link>

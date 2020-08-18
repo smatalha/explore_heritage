@@ -5,25 +5,31 @@ import { Route, Switch } from "react-router-dom";
 import About from './Components/About';
 import Home from './Components/Home';
 // import Header from './Components/Header';
-// import Login from './Components/Auth';
+// import Auth from './Components/Auth';
 import LoginForm from "./Components/LoginForm";
-import WishList from './Components/WishList';
+import SignUp from "./Components/SignUp";
+// import WishList from './Components/WishList';
 // import SitesContainer from './Containers/SitesContainer';
 import SitePage from './Components/SitePage';
 import SitesCollection from './Components/SitesCollection';
-// import Profile from './Components/Profile';
+import Profile from './Components/Profile';
 import UsersContainer from './Containers/UsersContainer';
-// import Footer from './Footer';
+import Footer from './Footer';
 
 
 
 class App extends React.Component {
 
   state = {
-     sites: [],
-     users: []
+    sites: [],
+    currentUser: null
     }
-
+  setUser = user => {
+    console.log(this.props)
+    this.setState({
+      currentUser: user
+    }, () => {this.props.history.push("/users/:id")})
+  }
   componentDidMount() {
     this.fetchSites()
     this.fetchUsers()
@@ -103,26 +109,30 @@ class App extends React.Component {
   };
 
   render() {
-    // console.log(this.state.users);
+    // console.log('useer',this.state);
     return (
       <div className="App">
         <header className="App-header">
             <NavBar/>
             {/* <Header/> */}
             <Switch>
-                      <Route path='/login' component={LoginForm} />
-                      <Route path='/wishlist' component={WishList}/>
-                      <Route path='/sites/:id' render={(routerProps) => <SitePage sites={this.state.sites}{...routerProps}
-                      handleChangeVisited={this.props.handleChangeVisited} removeComment={this.removeComment} />} />
-                      <Route path='/sites' render={(routerProps) => <SitesCollection sites={this.state.sites}{...routerProps} />} />
-                      {/* <Route path='/users/:id' render={(routerProps) => <Profile users={this.state.users}{...routerProps} />} /> */}
-                      <Route path='/users' render={() => <UsersContainer users={this.state.users}/>} />
-                      <Route path='/about' render={() => <About />} />
-                      <Route path='/' component={Home} />
+              {/* <Route path='/login' component={LoginForm} /> */}
+              <Route path='/signup' render={(routerProps) => <SignUp setUser={this.setUser} {...routerProps}/>} />
+              <Route path='/login' render={(routerProps) => <LoginForm setUser={this.setUser} {...routerProps}/>} />
+              {/* <Route path='/wishlist' component={WishList}/> */}
+              <Route path='/sites/:id' render={(routerProps) => <SitePage sites={this.state.sites}{...routerProps}
+              handleChangeVisited={this.props.handleChangeVisited} removeComment={this.removeComment} />} />
+              <Route path='/sites' render={(routerProps) => <SitesCollection sites={this.state.sites}{...routerProps} />} />
+              <Route path='/users/:id' render={(routerProps) => <Profile users={this.state.users}{...routerProps} />} />
+              <Route path='/users' render={() => <UsersContainer users={this.state.users}/>} />
+              <Route path='/about' render={() => <About />} />
+              <Route path='/' component={Home} />
             </Switch>
             {/* <footer className='footer'>©2020 EXHeritage</footer> */}
             {/* <Footer/> */}
         </header>
+            <Footer/>
+
       </div>
     );
   }
