@@ -1,5 +1,5 @@
 import React from 'react';
-import CommentForm from "./CommentForm";
+// import CommentForm from "./CommentForm";
 
 class SitePage extends React.Component {
   state = {
@@ -94,14 +94,14 @@ class SitePage extends React.Component {
                       </div>
                     </div>
                   </div>
-                  <div className="box">
+                  {/* <div className="box">
                       <CommentForm
                       removeComment={this.removeComment}
                       comments={site.comments}
                       deleteComment={this.deleteComment}
                       addComment={this.addComment}
                       />
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <div id="sidebar" className="ym-g33 ym-gr">
@@ -143,7 +143,7 @@ class SitePage extends React.Component {
                     <div className="box gmap">
                       <div className="" id="esriapp">
                       <iframe id="forecast_embed" key={site.latitude} title='weather' type="text/html" frameBorder="0" height="245" width="90%" src={"http://forecast.io/embed/#lat=" + site.latitude + "&lon=" + site.longitude}> </iframe>
-                      {/* <iframe width="370" height="600" title='weather' src="https://embed.windy.com/embed2.html?lat=37.823&lon=-73.828&detailLat=40.873&detailLon=-73.823&width=300&height=600&zoom=5&level=surface&overlay=wind&product=ecmwf&menu=&message=&marker=true&calendar=now&pressure=&type=map&location=coordinates&detail=true&metricWind=default&metricTemp=default&radarRange=-1" frameborder="0"></iframe> */}
+                      <iframe width="370" height="600" title='weather' src="https://embed.windy.com/embed2.html?lat=37.823&lon=-73.828&detailLat=40.873&detailLon=-73.823&width=300&height=600&zoom=5&level=surface&overlay=wind&product=ecmwf&menu=&message=&marker=true&calendar=now&pressure=&type=map&location=coordinates&detail=true&metricWind=default&metricTemp=default&radarRange=-1" frameborder="0"></iframe>
                       </div>
                     </div>
                   </div>

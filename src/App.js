@@ -8,12 +8,13 @@ import Home from './Components/Home';
 // import Auth from './Components/Auth';
 import LoginForm from "./Components/LoginForm";
 import SignUp from "./Components/SignUp";
+// import UsersControllers from './Components/UsersControllers';
 // import WishList from './Components/WishList';
 // import SitesContainer from './Containers/SitesContainer';
 import SitePage from './Components/SitePage';
 import SitesCollection from './Components/SitesCollection';
 import Profile from './Components/Profile';
-import UsersContainer from './Containers/UsersContainer';
+// import UsersContainer from './Containers/UsersContainer';
 import Footer from './Footer';
 
 
@@ -21,18 +22,26 @@ import Footer from './Footer';
 class App extends React.Component {
 
   state = {
-    sites: [],
-    currentUser: null
-    }
-  setUser = user => {
-    console.log(this.props)
-    this.setState({
-      currentUser: user
-    }, () => {this.props.history.push("/users/:id")})
+    sites: []
+    // currentUser: null,
+    // user: {
+    //   id:0,
+    //   name: "",
+    //   password: "",
+    //   img_url: '',
+    //   bio: '',
+    //   email: '',
+    //   sites: []
+    // }
   }
+  // setUser = user => {
+  //   this.setState({
+  //     currentUser: user
+  //   }, () => {this.props.history.push("/profile")})
+  // }
   componentDidMount() {
     this.fetchSites()
-    this.fetchUsers()
+    // this.fetchUsers()
   }
   fetchSites = () => {
     fetch('http://localhost:3000/sites')
@@ -41,12 +50,49 @@ class App extends React.Component {
         this.setState({ sites })
       })
   }
-  fetchUsers = () => {
-    fetch('http://localhost:3000/users')
-      .then(res => res.json())
-      .then(users => {
-        this.setState({ users })
+  // fetchUsers = () => {
+  //   fetch('http://localhost:3000/users')
+  //     .then(res => res.json())
+  //     .then(users => {
+  //       this.setState({ users })
+  //     })
+  // }
+  handleSubmit = ( e, userInfo) => {
+    e.preventDefault()
+    console.log(userInfo);
+    console.log('sign up form submitted');
+    // if (this.state.password === this.state.passwordConfirmation) {
+      fetch("http://localhost:3000/users", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          "accept": "application/json"
+        },
+        body: JSON.stringify(
+          {
+            name: userInfo.name,
+            password: userInfo.password,
+            bio: userInfo.bio,
+            email: userInfo.email,
+            img_url: userInfo.img_url,
+          }
+        )
       })
+        .then(res => res.json())
+        .then(res => {
+          console.log(res);
+        })
+      // }
+    //     .then(res => {
+    //       if (res.errors) {
+    //         alert(res.errors)
+    //       } else {
+    //         this.props.setUser(res)
+    //       }
+    //     })
+    // } else {
+    //   alert("password's don't match")
+    // }
   }
   // deleteComment = id => {
   //   let newArr = this.state.comments.filter(comment => { return comment.id !== id })
@@ -117,14 +163,15 @@ class App extends React.Component {
             {/* <Header/> */}
             <Switch>
               {/* <Route path='/login' component={LoginForm} /> */}
-              <Route path='/signup' render={(routerProps) => <SignUp setUser={this.setUser} {...routerProps}/>} />
+              <Route path='/signup' render={(routerProps) => <SignUp handleSubmit={this.handleSubmit} {...routerProps} />} />
               <Route path='/login' render={(routerProps) => <LoginForm setUser={this.setUser} {...routerProps}/>} />
-              {/* <Route path='/wishlist' component={WishList}/> */}
+              {/* <Route path='/UsersControllers' render={() => <UsersControllers currentUser={this.state.currentUser}/> } /> */}
+              {/* <Route path='/UsersControllers' component={UsersControllers}/> */}
               <Route path='/sites/:id' render={(routerProps) => <SitePage sites={this.state.sites}{...routerProps}
               handleChangeVisited={this.props.handleChangeVisited} removeComment={this.removeComment} />} />
               <Route path='/sites' render={(routerProps) => <SitesCollection sites={this.state.sites}{...routerProps} />} />
-              <Route path='/users/:id' render={(routerProps) => <Profile users={this.state.users}{...routerProps} />} />
-              <Route path='/users' render={() => <UsersContainer users={this.state.users}/>} />
+            <Route path='/profile' render={(routerProps) => <Profile  {...routerProps} />} />
+              {/* <Route path='/users' render={() => <UsersContainer users={this.state.users}/>} /> */}
               <Route path='/about' render={() => <About />} />
               <Route path='/' component={Home} />
             </Switch>

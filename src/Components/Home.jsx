@@ -1,7 +1,7 @@
 import React from 'react';
 import HeaderImg from './Header';
 // import Footer from '../Footer';
-import { Button, Image } from 'semantic-ui-react';
+// import { Button, Image } from 'semantic-ui-react';
 
 
 class Home extends React.Component {
@@ -17,17 +17,17 @@ class Home extends React.Component {
             <HeaderImg/>
             <div className="user_card">
 
-                <h1>
+                {/* <h1>
                     <strong>Welcome</strong>
                 </h1>
                 <h1>
-                        {/* <img src="/images/logo.jpeg" alt="EX" className="logo_image" /> */}
+                        <img src="/images/logo.jpeg" alt="EX" className="logo_image" />
                         <Image src='/images/logo.jpeg' />
                     Explore The world Heritage
-                </h1>
-                    <Button onClick={this.handleSingUp}>
+                </h1> */}
+                    {/* <Button onClick={this.handleSingUp}>
                     <h4>SignUp--It's Free</h4>
-                </Button>
+                </Button> */}
             </div>
             {/* <Footer/> */}
             </>

@@ -9,7 +9,7 @@ const UsersContainer = props => {
                 <Profile key={user.id} {...user}/>
             ))}
         </div>
-        );
+    );
 }
 
 export default UsersContainer;

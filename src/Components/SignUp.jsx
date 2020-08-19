@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import { Button, Form, Grid, Segment } from 'semantic-ui-react'
-import { Button, Form, Grid, Header,  Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header,  Segment, Image } from 'semantic-ui-react'
 
 
 
@@ -9,7 +9,8 @@ class SignUp extends Component {
     state = {
         name: "",
         password: "",
-        passwordConfirmation: '',
+        // passwordConfirmation: '',
+        img_url: '',
         bio: '',
         email: ''
     }
@@ -19,63 +20,23 @@ class SignUp extends Component {
             [e.target.name]: e.target.value
         })
     }
-
-    handleSubmit = e => {
-        e.preventDefault()
-
-        if (this.state.password === this.state.passwordConfirmation) {
-            fetch("http://localhost:3000/users", {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                    "accept": "application/json"
-                },
-                body: JSON.stringify({
-                    name: this.state.name,
-                    password: this.state.password,
-                    bio: this.state.bio,
-                    email: this.state.email
-                })
-            })
-            .then(res => res.json())
-            .then(res => {
-                if (res.errors) {
-                    alert(res.errors)
-                } else {
-                    this.props.setUser(res)
-                }
-            })
-        } else {
-            alert("password's don't match")
-        }
-    }
-    handleLogin = () => {
-        return (
-            this.props.history.push('/users/:id')
-        )
-    }
-    handleOldUser = () => {
-        return (
-            this.props.history.push('/login')
-        )
-    }
     render() {
-        // console.log(this.props);
+        console.log(this.state);
         return (
-            <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle' backgroun>
-                <Grid.Column style={{ maxWidth: 450 }}>
+            <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle' /*background*/>
+                <Grid.Column style={{ maxWidth: 850 }}>
                     <Header as='h2' color='teal' textAlign='center'>
-                        {/* <Image src='/images/logo.jpeg' /> */}
-                        <div className='title'>Sign Up</div>
+                        <Image src='/images/logo.jpeg'/>
+                        <div className='title'> Sign Up </div>
                         <div className='already_user'>
                             <span>Already have an account? </span>
                             <a  href='/login'>Log In</a>
                         </div>
                     </Header>
-                    <Form size='large' onSubmit={this.handleSubmit}>
+                    <Form size='large' onSubmit={(e)=>this.props.handleSubmit(e , this.state)}>
                         <Segment stacked>
                             <Form.Input
-                                fluid="true"
+                                // fluid="true"
                                 icon='user'
                                 iconPosition='left'
                                 placeholder='Name'
@@ -84,7 +45,7 @@ class SignUp extends Component {
                                 onChange={this.handleChange}
                             />
                             <Form.Input
-                                fluid="true"
+                                // fluid="true"
                                 icon='mail'
                                 name='email'
                                 iconPosition='left'
@@ -92,7 +53,7 @@ class SignUp extends Component {
                                 placeholder='E-mail address'
                             />
                             <Form.Input
-                                fluid="true"
+                                // fluid="true"
                                 icon='image'
                                 name='img_url'
                                 iconPosition='left'
@@ -100,7 +61,7 @@ class SignUp extends Component {
                                 placeholder='Image URL'
                                 />
                             <Form.TextArea
-                                fluid
+                                // fluid
                                 icon='lock'
                                 iconPosition='left'
                                 placeholder='Bio'
@@ -109,7 +70,7 @@ class SignUp extends Component {
                                 onChange={this.handleChange}
                             />
                             <Form.Input
-                                fluid="true"
+                                // fluid="true"
                                 icon='lock'
                                 iconPosition='left'
                                 placeholder='Password'
@@ -117,17 +78,17 @@ class SignUp extends Component {
                                 onChange={this.handleChange}
                                 name='password'
                             />
-                            <Form.Input
-                                fluid
+                            {/* <Form.Input
+                                // fluid
                                 icon='lock'
                                 iconPosition='left'
                                 placeholder='Confirm Password'
                                 type='passwordConfirmation'
                                 name='passwordConfirmation'
                                 onChange={this.handleChange}
-                            />
-                            <Form.Checkbox label='I agree to the Terms and Conditions' />
-                        <Button color='teal' fluid size='large' >
+                            /> */}
+                            {/* <Form.Checkbox label='I agree to the Terms and Conditions' /> */}
+                            <Button color='teal' fluid size='large' >
                                 SignUp
                         </Button>
                         </Segment>
@@ -137,47 +98,8 @@ class SignUp extends Component {
                     </Message> */}
                 </Grid.Column>
             </Grid>
-            // <Segment placeholder>
-            //     <div className="signup_form">
-            //         <Grid columns={2} relaxed='very' stackable>
-            //             <Grid.Column>
-            //                 {/* <Divider vertical><h2>Ready to join the EventsInc community?</h2></Divider> */}
-            //                 <Form>
-            //                     <Form.Input
-            //                         icon='user'
-            //                         iconPosition='left'
-            //                         label='Username'
-            //                         placeholder='Pick a name, any name...'
-            //                     /><br></br>
-            //                     <Form.Input
-            //                         icon='lock'
-            //                         iconPosition='left'
-            //                         label='Password'
-            //                         type='password'
-            //                         placeholder='Password123...NOT!'
-
-            //                     /><br></br>
-
-            //                     <Button content='Sign up' icon='signup' size='big' />
-
-
-            //                 </Form>
-            //             </Grid.Column>
-            //             <Grid.Column verticalAlign='middle'>
-            //             </Grid.Column>
-            //         </Grid>
-            //     </div>
-            //     <br></br><br></br>
-
-
-
-            // </Segment>
-
         )
     };
 };
-
-
-
 
 export default SignUp

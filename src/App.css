@@ -1,11 +1,29 @@
 .App {
     text-align: center;
+    background-color: azure;
 }
 .footer {
     margin-top: 30px;
 }
 .logo_image {
     width: 5%;
+}
+.user_card {
+    /* background-image: url(https://i.insider.com/5d24516421a86104a0726044?width=1200&format=jpeg); */
+      /* background-image: url(/images/cover.png); */
+}
+img#header {
+    height: -webkit-fill-available;
+}
+header.App-header {
+    background-color: azure;
+}
+.ui.fluid.input>input {
+    width: 0!important;
+    background-color: azure;
+}
+select {
+    background-color: azure;
 }
 .title {
     font-size: 56px;
@@ -21,10 +39,13 @@
 }
 .content {
     line-height: 145%;
-    background: #fff;
+    background: azure;
     margin-bottom: 10px;
     padding: 20px;
     word-wrap: break-word;
+}
+.content .box {
+    background-color: rgba(0,0,0,.1);
 }
 .content h1 {
     font-size: 330%;
@@ -129,7 +150,7 @@ form {
     color: #444;
 }
 .searchbox, .advanced_search {
-    background-color: #e0e0e0;
+    background-color: azure;
     border-bottom: 1px solid #d0d0d0;
     width: auto;
     margin: 0 0 10px 0;
@@ -349,7 +370,7 @@ fieldset, img {
     border: 0 solid;
 }
 .navbar {
-    background-color: aliceblue;
+    background-color: #dcf1f1;;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-around;

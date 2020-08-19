@@ -2,8 +2,8 @@ import React from 'react'
 import { Grid, Image, Tab, Button } from 'semantic-ui-react'
 
 const Profile = (props) => {
-    const { img_url, name, bio,  email } = props // sites,
-    // console.log(props)
+    const { img_url, name, bio, email } = props //sites,
+    // console.log(sites)
     return (
     <>
         <Grid celled>
@@ -20,7 +20,7 @@ const Profile = (props) => {
             </Grid.Row>
         </Grid>
             {/* {/* <Tab.Pane>Tab 1 Content</Tab.Pane> */}
-            <Tab.Pane> <h2>Wish List</h2></Tab.Pane> 
+            <Tab.Pane> <h2>Wish List</h2></Tab.Pane>
 
         <Grid columns={5} >
             <Grid.Row>

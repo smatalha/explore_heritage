@@ -67,76 +67,76 @@ class LoginForm extends React.Component {
         password: ''
     }
     render () {
-            // console.log(props.history.push);
-            const handleSingUp = () => {
-                return (
-                    this.props.history.push('/SignUp')
-                )
-            }
-            // const handleLogin = () => {
-            //     return (
-            //         this.props.history.push('/users/:id')
-            //     )
-            // }
-            const handleChange = e => {
-                this.setState({ [e.target.name]: e.target.value})
-            }
-            const handleSubmit = e => {
-                e.preventDefault()
-                fetch("http://localhost:3000/login", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Accept": "application/json",
-                    },
-                    body: JSON.stringify(this.state)
-                })
-                .then(res=> res.json())
-                .then(res => {
-                    if (res.errors) {
-                        alert(res.errors)
-                    } else {
-                        this.props.setUser(res);
-                    }
-                })
-            }
-            console.log(this.state);
+        // console.log(props.history.push);
+        const handleSingUp = () => {
             return (
-                <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
-                    <Grid.Column style={{ maxWidth: 450 }}>
-                        <Header as='h2' color='teal' textAlign='center'>
-                            <Image src='/images/logo.jpeg' /> Log-in to your account
-                </Header>
-                        <Form size='large' onSubmit={handleSubmit}>
-                            <Segment stacked>
-                                <Form.Input
-                                    fluid icon='user'
-                                    name='name'
-                                    iconPosition='left'
-                                    placeholder='Name'
-                                    onChange={handleChange}
-                                />
-                                <Form.Input
-                                    fluid
-                                    name='password'
-                                    icon='lock'
-                                    iconPosition='left'
-                                    placeholder='Password'
-                                    type='password'
-                                    onChange={handleChange}
-                                />
-                                {/* <Form.Checkbox label='I agree to the Terms and Conditions' /> */}
-                                <Button color='teal' fluid size='large' /*onClick={handleLogin}*/>
-                                    Login
-                                </Button>
-                            </Segment>
-                        </Form>
-                        <Message>
-                            New to us? <Button onClick={handleSingUp} >Sign Up</Button>
-                        </Message>
-                    </Grid.Column>
-                </Grid>
+                this.props.history.push('/SignUp')
             )
+        }
+        // const handleLogin = () => {
+        //     return (
+        //         this.props.history.push('/profile')
+        //     )
+        // }
+        const handleChange = e => {
+            this.setState({ [e.target.name]: e.target.value})
+        }
+        const handleSubmit = e => {
+            e.preventDefault()
+            fetch("http://localhost:3000/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                },
+                body: JSON.stringify(this.state)
+            })
+            .then(res=> res.json())
+            .then(res => {
+                if (res.errors) {
+                    alert(res.errors)
+                } else {
+                    this.props.setUser(res);
+                }
+            })
+        }
+        // console.log(this.state);
+        return (
+            <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+                <Grid.Column style={{ maxWidth: 450 }}>
+                    <Header as='h2' color='teal' textAlign='center'>
+                        <Image src='/images/logo.jpeg' /> Log-in to your account
+            </Header>
+                    <Form size='large' onSubmit={handleSubmit}>
+                        <Segment stacked>
+                            <Form.Input
+                                fluid icon='user'
+                                name='name'
+                                iconPosition='left'
+                                placeholder='Name'
+                                onChange={handleChange}
+                            />
+                            <Form.Input
+                                fluid
+                                name='password'
+                                icon='lock'
+                                iconPosition='left'
+                                placeholder='Password'
+                                type='password'
+                                onChange={handleChange}
+                            />
+                            {/* <Form.Checkbox label='I agree to the Terms and Conditions' /> */}
+                            <Button color='teal' fluid size='large' /*onClick={handleLogin}*/>
+                                Login
+                            </Button>
+                        </Segment>
+                    </Form>
+                    <Message>
+                        New to us? <Button onClick={handleSingUp} >Sign Up</Button>
+                    </Message>
+                </Grid.Column>
+            </Grid>
+        )
     }
 
 }
