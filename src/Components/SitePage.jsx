@@ -136,14 +136,14 @@ class SitePage extends React.Component {
                           style={{ border: 0 }}
                           tabindex={0}
                           aria-hidden={false}
-                          src={'https://maps.google.com/maps?q=' + site.latitude + ',' + site.longitude + '&t=&z=15&ie=UTF8&iwloc=&output=embed'} allowfullscreen={""} >
+                          src={'https://maps.google.com/maps?q=' + site.latitude + ',' + site.latitude + '&t=&z=15&ie=UTF8&iwloc=&output=embed'} allowfullscreen={""} >
                         </iframe>
                       </div>
                     </div>
                     <div className="box gmap">
                       <div className="" id="esriapp">
-                      <iframe id="forecast_embed" key={site.latitude} title='weather' type="text/html" frameBorder="0" height="245" width="90%" src={"http://forecast.io/embed/#lat=" + site.latitude + "&lon=" + site.longitude}> </iframe>
-                      <iframe width="370" height="600" title='weather' src="https://embed.windy.com/embed2.html?lat=37.823&lon=-73.828&detailLat=40.873&detailLon=-73.823&width=300&height=600&zoom=5&level=surface&overlay=wind&product=ecmwf&menu=&message=&marker=true&calendar=now&pressure=&type=map&location=coordinates&detail=true&metricWind=default&metricTemp=default&radarRange=-1" frameborder="0"></iframe>
+                      <iframe id="forecast_embed" key={site.latitude} title='weather' type="text/html" frameBorder="0" height="145" width="90%" src={"http://forecast.io/embed/#lat=" + site.latitude + "&lon=" + site.longitude}> </iframe>
+                        <iframe width="370" height="600" title='weather' src={'https://embed.windy.com/embed2.html?lat=' + site.latitude + '&lon=' + site.longitude + '&detailLat=' + site.latitude + '&detailLon=' + site.longitude+ '&width=300&height=600&zoom=5&level=surface&overlay=wind&product=ecmwf&menu=&message=&marker=true&calendar=now&pressure=&type=map&location=coordinates&detail=true&metricWind=default&metricTemp=default&radarRange=-1'} frameborder="0"></iframe>
                       </div>
                     </div>
                   </div>

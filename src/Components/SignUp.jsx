@@ -9,7 +9,7 @@ class SignUp extends Component {
     state = {
         name: "",
         password: "",
-        // passwordConfirmation: '',
+        passwordConfirmation: '',
         img_url: '',
         bio: '',
         email: ''
@@ -21,7 +21,7 @@ class SignUp extends Component {
         })
     }
     render() {
-        console.log(this.state);
+        // console.log(this.state);
         return (
             <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle' /*background*/>
                 <Grid.Column style={{ maxWidth: 850 }}>
@@ -33,7 +33,7 @@ class SignUp extends Component {
                             <a  href='/login'>Log In</a>
                         </div>
                     </Header>
-                    <Form size='large' onSubmit={(e)=>this.props.handleSubmit(e , this.state)}>
+                    <Form size='large' onSubmit={(e)=>this.props.handleSignupSubmit(e , this.state)}>
                         <Segment stacked>
                             <Form.Input
                                 // fluid="true"
@@ -78,16 +78,7 @@ class SignUp extends Component {
                                 onChange={this.handleChange}
                                 name='password'
                             />
-                            {/* <Form.Input
-                                // fluid
-                                icon='lock'
-                                iconPosition='left'
-                                placeholder='Confirm Password'
-                                type='passwordConfirmation'
-                                name='passwordConfirmation'
-                                onChange={this.handleChange}
-                            /> */}
-                            {/* <Form.Checkbox label='I agree to the Terms and Conditions' /> */}
+                            <Form.Checkbox label='I agree to the Terms and Conditions' />
                             <Button color='teal' fluid size='large' >
                                 SignUp
                         </Button>
