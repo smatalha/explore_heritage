@@ -1,14 +1,19 @@
 import React from 'react';
-// import CommentForm from "./CommentForm";
+import CommentForm from "./CommentForm";
 
 class SitePage extends React.Component {
   state = {
-    currentPage: null
+    currentPage: null,
     // comments: []
   };
   componentDidMount() {
     this.fetchSite();
     // this.fetchComments();
+  }
+  handleWishlist = () => {
+    return (
+      this.props.history.push('/login')
+    )
   }
   handleChangeVisited = (id) => {
     let siteId = this.props.match.params.id
@@ -88,20 +93,20 @@ class SitePage extends React.Component {
                           {site.visited ? "Visited" : "Unvisited"}{" "}
                         </button>
                         {/* </span> */}
-                        <button /*onClick={() => push(`/sites/${id}`)}*/>
+                        <button /*onClick={() => push(`/sites/${id}`)}*/ onClick={this.handleWishlist} >
                           Wish List
                         </button>
                       </div>
                     </div>
                   </div>
-                  {/* <div className="box">
+                  <div className="box">
                       <CommentForm
                       removeComment={this.removeComment}
                       comments={site.comments}
                       deleteComment={this.deleteComment}
                       addComment={this.addComment}
                       />
-                  </div> */}
+                  </div>
                 </div>
               </div>
               <div id="sidebar" className="ym-g33 ym-gr">

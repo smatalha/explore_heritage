@@ -1,7 +1,7 @@
 import React from 'react';
 import HeaderImg from './Header';
 // import Footer from '../Footer';
-// import { Button, Image } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 
 
 class Home extends React.Component {
@@ -9,6 +9,11 @@ class Home extends React.Component {
     handleSingUp = () => {
         return (
             this.props.history.push('/SignUp')
+        )
+    }
+    handleClick = () => {
+        return (
+            this.props.history.push('/sites')
         )
     }
     render() {
@@ -25,9 +30,11 @@ class Home extends React.Component {
                         <Image src='/images/logo.jpeg' />
                     Explore The world Heritage
                 </h1> */}
-                    {/* <Button onClick={this.handleSingUp}>
+                    <Button onClick={this.handleSingUp}>
                     <h4>SignUp--It's Free</h4>
-                </Button> */}
+                </Button>
+                    <Button className='wish_button' onClick={this.handleClick}>Find Heritage to explore</Button>
+
             </div>
             {/* <Footer/> */}
             </>

@@ -4,16 +4,14 @@ import NavBar from './Components/NavBar';
 import { Route, Switch } from "react-router-dom";
 import About from './Components/About';
 import Home from './Components/Home';
-// import Header from './Components/Header';
 import LoginForm from "./Components/LoginForm";
 import SignUp from "./Components/SignUp";
-// import UsersControllers from './Components/UsersControllers';
 // import WishList from './Components/WishList';
 import SitePage from './Components/SitePage';
 import SitesCollection from './Components/SitesCollection';
 import Profile from './Components/Profile';
-// import UsersContainer from './Containers/UsersContainer';
 import Footer from './Footer';
+import { withRouter } from 'react-router-dom'
 
 class App extends React.Component {
 
@@ -26,10 +24,25 @@ class App extends React.Component {
       bio: '',
       email: '',
       sites: []
-    }
+    },
+    token: ""
   }
+
   componentDidMount() {
     this.fetchSites()
+    this.fetchLogin()
+  }
+
+  fetchLogin = () => {
+    if (localStorage.token) {
+      fetch("http://localhost:3000/users/stay_logged_in", {
+        headers: {
+          "Authorization": localStorage.token
+        }
+      })
+        .then(r => r.json())
+        .then(this.handleResponse)
+    }
   }
   fetchSites = () => {
     fetch('http://localhost:3000/sites')
@@ -37,6 +50,16 @@ class App extends React.Component {
       .then(sites => {
         this.setState({ sites })
       })
+  }
+  handleResponse = (resp) => {
+    if (resp.message) {
+      alert(resp.message)
+    } else {
+      localStorage.token = resp.token
+      this.setState(resp, () => {
+        this.props.history.push("/profile")
+      })
+    }
   }
   handleSignupSubmit = ( e, userInfo) => {
     e.preventDefault()
@@ -50,31 +73,22 @@ class App extends React.Component {
         body: JSON.stringify(userInfo)
       })
       .then(res => res.json())
-      .then(res => {
-        if (res.id) {
-          this.setState({
-            user: res
-          })
-        }else{
-          alert(res.message)
-        }
-    })
+      .then(this.handleResponse)
   }
+
   handleLoginSubmit = (e, userInfo) => {
     e.preventDefault()
-
     console.log('login form submitted');
-    fetch('http://localhost:3000/users/login', {
+    fetch("http://localhost:3000/login", {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        "accept": "application/json"
       },
       body: JSON.stringify(userInfo)
     })
     .then(res=>res.json())
-    .then(res=> {
-      console.log(res);
-    })
+    .then(this.handleResponse)
   }
   // deleteComment = id => {
   //   let newArr = this.state.comments.filter(comment => { return comment.id !== id })
@@ -135,7 +149,13 @@ class App extends React.Component {
         console.log(e);
       })
   };
-
+  renderProfile = (routerProps) => {
+    if (this.state.token) {
+      return <Profile user={this.state.user} token={this.state.token} {...routerProps}/* addNewSnack={this.addNewSnack}*/ />
+    } else {
+      this.props.history.push("/login")
+    }
+  }
   render() {
     return (
       <div className="App">
@@ -143,16 +163,12 @@ class App extends React.Component {
             <NavBar/>
             {/* <Header/> */}
             <Switch>
-              {/* <Route path='/login' component={LoginForm} /> */}
               <Route path='/signup' render={(routerProps) => <SignUp handleSignupSubmit={this.handleSignupSubmit} {...routerProps} />} />
-            <Route path='/login' render={(routerProps) => <LoginForm handleLoginSubmit={this.handleLoginSubmit} {...routerProps}/>} />
-              {/* <Route path='/UsersControllers' render={() => <UsersControllers currentUser={this.state.currentUser}/> } /> */}
-              {/* <Route path='/UsersControllers' component={UsersControllers}/> */}
+              <Route path='/login' render={(routerProps) => <LoginForm handleLoginSubmit={this.handleLoginSubmit} {...routerProps}/>} />
               <Route path='/sites/:id' render={(routerProps) => <SitePage sites={this.state.sites}{...routerProps}
               handleChangeVisited={this.props.handleChangeVisited} removeComment={this.removeComment} />} />
               <Route path='/sites' render={(routerProps) => <SitesCollection sites={this.state.sites}{...routerProps} />} />
-            <Route path='/profile' render={(routerProps) => <Profile user={this.state.user} {...routerProps} />} />
-              {/* <Route path='/users' render={() => <UsersContainer users={this.state.users}/>} /> */}
+              <Route path="/profile" render={this.renderProfile} />
               <Route path='/about' render={() => <About />} />
               <Route path='/' component={Home} />
             </Switch>
@@ -165,4 +181,5 @@ class App extends React.Component {
   }
 }
 
-export default App;
+let MagicalComponent = withRouter(App)
+export default MagicalComponent

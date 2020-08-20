@@ -7,6 +7,11 @@ class LoginForm extends React.Component {
         password: ''
     }
     render () {
+        const handleSingUp = () => {
+            return (
+                this.props.history.push('/SignUp')
+            )
+        }
         const handleChange = e => {
             this.setState({ [e.target.name]: e.target.value})
         }
@@ -35,14 +40,14 @@ class LoginForm extends React.Component {
                                 type='password'
                                 onChange={handleChange}
                             />
-                            <Form.Checkbox label='I agree to the Terms and Conditions' />
+                            {/* <Form.Checkbox label='I agree to the Terms and Conditions' /> */}
                             <Button color='teal' fluid size='large' /*onClick={handleLogin}*/>
                                 Login
                             </Button>
                         </Segment>
                     </Form>
                     <Message>
-                        New to us? <Button >Sign Up</Button>
+                        New to us? <Button onClick={handleSingUp} >Sign Up</Button>
                     </Message>
                 </Grid.Column>
             </Grid>
