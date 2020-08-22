@@ -4,10 +4,12 @@ import WishList from './WishList'
 
 const Profile = (props) => {
     const { img_url, name, bio, sites, email } = props.user
-    console.log(props)
+    // console.log(props)
     const handleSubmitAction = () => {
-        localStorage.clear()
-        props.history.push('/login')
+        // return (
+            localStorage.clear()
+            props.history.push('/login')
+        // )
     }
     return (
     <>
@@ -21,14 +23,12 @@ const Profile = (props) => {
                     <h2>{name}</h2>
                     <p>{bio}</p>
                     <Button icon='edit'></Button>
-                    <Button icon='log out' onClick={handleSubmitAction}></Button>
+                    <Button icon='log out' onClick={handleSubmitAction} ></Button>
 
                 </Grid.Column>
             </Grid.Row>
         </Grid>
-            {/* {/* <Tab.Pane>Tab 1 Content</Tab.Pane> */}
             <Tab.Pane> <h2>Wish List</h2></Tab.Pane>/
-
         <Grid columns={5} >
             <Grid.Row>
                 {sites.map(site=>

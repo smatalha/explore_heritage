@@ -2,7 +2,7 @@ import React from 'react';
 
 
 const WishList = (props) => {
-    console.log(props);
+    // console.log(props);
     let handleClick = () => {
         return (
             props.history.push('/sites')

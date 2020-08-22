@@ -8,30 +8,47 @@ class CommentForm extends React.Component {
     }
     handleChange = (e) => {
         this.setState({
-            [e.target.name]: e.target.value
+            content: e.target.value
         })
     }
-    handleSubmit = (e) => {
+    handleSubmit = e => {
         e.preventDefault();
-        fetch('http://localhost:3000/sites', {
+        fetch('http://localhost:3000/comments', {
             method: "POST",
             headers: {
                 "content-type": "application/json"
             },
             body: JSON.stringify({
                 content: this.state.content,
+                user_id: localStorage.user_id,
+                site_id: this.props.siteId,
             }),
         })
             .then((r) => r.json())
             .then((newComment) => {
+                console.log(newComment);
                 this.props.addComment(newComment);
                 this.setState({
                     content: "",
                 })
             });
     };
+    handleRemoveComment = ( id ) => {
+        // console.log('submit delete');
+        fetch(`http://localhost:3000/comments/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            }
+        })
+        .then(res=>res.json())
+        .then(res=>{
+            console.log(res);
+        })
+    }
     render () {
-        console.log(this.state);
+        console.log(this.props.comments);
         return (
             <Comment.Group>
                 <Comment>
@@ -47,18 +64,16 @@ class CommentForm extends React.Component {
                     <Comment.Text>
                         <ul>
                             {this.props.comments.map((comment) => (
-                                <ol key={comment.id} >
+                                <ol key={comment.id} id={comment.id}>
                                     {comment.content}
-                                    <Button >
-                                        <span role='img' aria-label="" onClick={() => this.props.removeComment(comment.id)}> ❌ </span>
-                                    </Button>
+                                    <span role='img' aria-label="" onClick={() => this.handleRemoveComment(comment.id)}>❌</span>
                                 </ol>
                             ))}
                         </ul>
                     </Comment.Text>
                 </Comment.Content>
                 </Comment>
-                <Form reply onSubmit={this.handleSubmit}>
+                <Form reply onSubmit={this.handleSubmit} >
                 <Form.TextArea onChange={this.handleChange}/>
                 <Button content="Add Comment" labelPosition="left" icon="edit" primary />
                 </Form>

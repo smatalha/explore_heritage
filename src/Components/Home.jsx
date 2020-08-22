@@ -33,7 +33,7 @@ class Home extends React.Component {
                     <Button onClick={this.handleSingUp}>
                     <h4>SignUp--It's Free</h4>
                 </Button>
-                    <Button className='wish_button' onClick={this.handleClick}>Find Heritage to explore</Button>
+                    <Button className='wish_button'  onClick={this.handleClick}>Find Heritage to explore</Button>
 
             </div>
             {/* <Footer/> */}

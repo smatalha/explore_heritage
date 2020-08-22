@@ -27,6 +27,28 @@ class App extends React.Component {
     },
     token: ""
   }
+  // addNewComment = (newComment) => {
+  //   // console.log(newComment);
+  //   // let copyOfComments = [...this.state.sites.Comments, newComment]
+  //   // let copyOfSite = [...this.state.sites.map(site=> {
+  //   //   if (site.id === newComment.site_id) {
+  //   //   return {...site, comments: [...site.comments, newComment]}
+  //   //   } else {
+  //   //     return site
+  //   //   }
+  //   // })]
+  //   // console.log(copyOfSite);
+  //   this.setState({
+  //     sites: [...this.state.sites.map(site => {
+  //       if (site.id === newComment.site_id) {
+  //         return { ...site, comments: [...site.comments, newComment] }
+  //       } else {
+  //         return site
+  //       }
+  //     })]
+  //   })
+  //   console.log(this.state.sites);
+  // }
 
   componentDidMount() {
     this.fetchSites()
@@ -56,10 +78,16 @@ class App extends React.Component {
       alert(resp.message)
     } else {
       localStorage.token = resp.token
-      this.setState(resp, () => {
+      localStorage.user_id = resp.user.id
+      this.setState(resp,  () => {
         this.props.history.push("/profile")
       })
     }
+  }
+  logOut = () => {
+    this.setState({
+      user: null
+    }, () => { this.props.history.push("/login")})
   }
   handleSignupSubmit = ( e, userInfo) => {
     e.preventDefault()
@@ -90,33 +118,7 @@ class App extends React.Component {
     .then(res=>res.json())
     .then(this.handleResponse)
   }
-  // deleteComment = id => {
-  //   let newArr = this.state.comments.filter(comment => { return comment.id !== id })
-  //   this.setState({
-  //     comments: newArr
-  //   })
-  // };
-  removeComment = commentId => {
-    fetch(`http://localhost:3000/comments/${commentId}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json'
-      }
-    })
-      .then(res => res.json())
-      .then((data) => {
-        console.log(data);
-        // let newSiteArray = this.state.sites.map(site => {
-        //   if (site.id === this.state.currentSite) {
-        //     let newComments = site.comments.filter(comment => comment.id !== commentId)
-        //     return { ...site, comments: newComments }
-        //   }
-        //   return site
-        // })
-        // this.setState({ sites: newSiteArray })
-      })
-  }
+
   handleVisited = (id) => {
     let updatedSite = this.state.sites.map(site => {
       if (site.id === id) {
@@ -129,34 +131,30 @@ class App extends React.Component {
       sites: updatedSite
     })
   }
-  handleChangeVisited = (id) => {
-    // let siteId = this.props.match.params.id
-    const options = {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        visited: !this.props.visited
-      })
-    }
-
-    fetch(`http://localhost:3000/sites/${id}`, options)
-      .then(res => res.json())
-      .then(e => {
-        this.handleVisited(id)
-        console.log(e);
-      })
+  handleChangeVisited = (data) => {
+    let targetsiteIndex = this.state.sites.findIndex(
+      (site) => site.id === data.id
+    );
+    let copysites = [...this.state.sites]; // DO NOT MUTATE STATE
+    copysites[targetsiteIndex] = data;
+    this.setState({ sites: copysites });
   };
   renderProfile = (routerProps) => {
     if (this.state.token) {
-      return <Profile user={this.state.user} token={this.state.token} {...routerProps}/* addNewSnack={this.addNewSnack}*/ />
+      return <Profile
+        user={this.state.user}
+        token={this.state.token}
+        {...routerProps}
+        // logout={this.logOut}
+        /* addNewComment={this.addNewComment}*/
+      />
     } else {
       this.props.history.push("/login")
     }
   }
+
   render() {
+    // console.log(this.state.sites);
     return (
       <div className="App">
         <header className="App-header">
@@ -166,7 +164,7 @@ class App extends React.Component {
               <Route path='/signup' render={(routerProps) => <SignUp handleSignupSubmit={this.handleSignupSubmit} {...routerProps} />} />
               <Route path='/login' render={(routerProps) => <LoginForm handleLoginSubmit={this.handleLoginSubmit} {...routerProps}/>} />
               <Route path='/sites/:id' render={(routerProps) => <SitePage sites={this.state.sites}{...routerProps}
-              handleChangeVisited={this.props.handleChangeVisited} removeComment={this.removeComment} />} />
+              handleChangeVisited={this.props.handleChangeVisited} removeComment={this.removeComment} token={this.state.token}/>} />
               <Route path='/sites' render={(routerProps) => <SitesCollection sites={this.state.sites}{...routerProps} />} />
               <Route path="/profile" render={this.renderProfile} />
               <Route path='/about' render={() => <About />} />
