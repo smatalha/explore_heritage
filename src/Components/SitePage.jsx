@@ -155,7 +155,6 @@ class SitePage extends React.Component {
                     </div>
                     <div className="box gmap">
                       <div className="" id="esriapp">
-                        {/* <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3025.306202756802!2d-74.04668908467211!3d40.68925344694398!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25090129c363d%3A0x40c6a5770d25022b!2sStatue%20of%20Liberty%20National%20Monument!5e0!3m2!1sen!2sus!4v1597334040154!5m2!1sen!2sus" title="Google map" width={ 370 }height={500} frameborder={0} style={{border:0 }} allowfullscreen={""} aria-hidden={ false } tabindex={0}></iframe> */}
                         <iframe
                           title="google map"
                           width={370}

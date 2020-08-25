@@ -27,28 +27,6 @@ class App extends React.Component {
     },
     token: ""
   }
-  // addNewComment = (newComment) => {
-  //   // console.log(newComment);
-  //   // let copyOfComments = [...this.state.sites.Comments, newComment]
-  //   // let copyOfSite = [...this.state.sites.map(site=> {
-  //   //   if (site.id === newComment.site_id) {
-  //   //   return {...site, comments: [...site.comments, newComment]}
-  //   //   } else {
-  //   //     return site
-  //   //   }
-  //   // })]
-  //   // console.log(copyOfSite);
-  //   this.setState({
-  //     sites: [...this.state.sites.map(site => {
-  //       if (site.id === newComment.site_id) {
-  //         return { ...site, comments: [...site.comments, newComment] }
-  //       } else {
-  //         return site
-  //       }
-  //     })]
-  //   })
-  //   console.log(this.state.sites);
-  // }
 
   componentDidMount() {
     this.fetchSites()
