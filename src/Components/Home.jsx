@@ -1,42 +1,26 @@
 import React from 'react';
 import HeaderImg from './Header';
-// import Footer from '../Footer';
-import { Button } from 'semantic-ui-react';
-
 
 class Home extends React.Component {
 
-    handleSingUp = () => {
-        return (
-            this.props.history.push('/SignUp')
-        )
-    }
-    handleClick = () => {
-        return (
-            this.props.history.push('/sites')
-        )
-    }
     render() {
         return (
             <>
             <HeaderImg/>
             <div className="user_card">
 
-                {/* <h1>
+                <h1>
                     <strong>Welcome</strong>
                 </h1>
-                <h1>
-                        <img src="/images/logo.jpeg" alt="EX" className="logo_image" />
-                        <Image src='/images/logo.jpeg' />
-                    Explore The world Heritage
-                </h1> */}
-                    <Button onClick={this.handleSingUp}>
-                    <h4>SignUp--It's Free</h4>
-                </Button>
-                    <Button className='wish_button'  onClick={this.handleClick}>Find Heritage to explore</Button>
+                <h1>Explore The world Heritage</h1>
+                <h4>SignUp--It's Free</h4>
+                {/* <img src="https://i.imgur.com/td8DG0k.jpg?1" alt="Kat" className="card_image" /> */}
 
+                {/* <div className="user_name">
+                    <h1>Kat(35), NYC</h1>
+                    <h2>Quarantined but uncontained adventurer. Creature of havoc.</h2>
+                </div> */}
             </div>
-            {/* <Footer/> */}
             </>
         );
     }

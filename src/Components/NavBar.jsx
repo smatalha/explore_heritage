@@ -1,27 +1,43 @@
-import React from 'react';
+import React from "react"
+import logo from "../logo.jpeg"
+// import { Link } from "react-scroll"
 import { Link } from 'react-router-dom';
-// import { Button} from 'semantic-ui-react'
-import { Image } from 'semantic-ui-react'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-
-const NavBar = () => {
-
+const Navbar = () => {
     return (
-        <div className="navbar">
-            {/* <Image src='/images/logo1.png'/> */}
-            <Link to="/" >
-
-            <Image src="/images/logo1.png" alt="" srcset="" />
-            </Link>
-            {/* <p className='' >Find Heritage to explore</p> */}
-            <Link to="/sites">Heritages</Link>
-
-            {/* <Link to="/wishlist">Wish List</Link> */}
-            <Link to="/profile">Profile</Link>
-            <Link to="/login">Login</Link>
-            {/* <Link to="/logout">Logout</Link> */}
-            <Link to="/about">About</Link>
-        </div>
+        <nav className="navbar navbar-expand-lg navbar-light bg-green fixed-top">
+            <div className="container">
+                <a className="navbar-brand" href="/"><img className="logo" src={logo} alt="Logo"/></a>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <FontAwesomeIcon icon={faBars} style={{ color: "#fff" }} />
+                </button>
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul className="navbar-nav ml-auto">
+                        <li className="nav-item active">
+                            <Link smooth={true} to="/" offset={-110} className="nav-link" href="#">Home <span className="sr-only">(current)</span></Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link smooth={true} to="wishlist" offset={-110} className="nav-link" href="#">Wish List</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link smooth={true} to="sites" offset={-110} className="nav-link" href="#">Heritages</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link smooth={true} to="user" offset={-110} className="nav-link" href="#">Profile</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link smooth={true} to="login" offset={-110} className="nav-link" href="#">Log In</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link smooth={true} to="about" offset={-110} className="nav-link" href="#">About</Link>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     )
 }
-export default NavBar;
+
+export default Navbar;

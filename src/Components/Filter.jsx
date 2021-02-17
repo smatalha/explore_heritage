@@ -1,5 +1,4 @@
 import React from 'react'
-// import { Dropdown } from 'semantic-ui-react'
 
 const Filter = props => {
     // console.log(props.sites)
@@ -23,35 +22,36 @@ const Filter = props => {
     return (
         <div className='filter'>
             {/* <label for="sites-select">Choose a Heritage Site:</label>
-            <select id="sites-select" >
-                <optgroup label="Category" value={props.sortBy} onChange={props.handleCategory}>
+            <select id="sites-select" value={props.filterBy} onChange={props.handleChange}>
+                <optgroup label="Category" >
                     <option value="">None</option>
                         {optionsCategory}
                 </optgroup>
-                <optgroup label="Region" value={props.sortBy} onChange={props.handleRegion}>
+                <optgroup label="Region">
                         {optionsRegion}
                 </optgroup>
-                <optgroup label='Country' value={props.sortBy} onChange={props.handleCountry}>
+                <optgroup label='Country'>
                         {optionsCountry}
                 </optgroup>
             </select> */}
-
             <label>
-                Search By:
-            <label>
-                <select  onChange={props.handleRegion}>
-                    <option value="">Region</option>
-                        {optionsRegion}
-                </select>
-            </label>
-                    <select value={props.sortBy} onChange={props.handleCategory}>
-                    <option value="">Category</option>
+                Filter By Category:
+                    <select value={props.sortBy} onChange={props.handleChange}>
+                    <option value="">None</option>
                         {optionsCategory}
                 </select>
             </label>
             <label>
-                <select value={props.sortBy} onChange={props.handleCountry}>
-                    <option value="">Country</option>
+                Filter By Region:
+                    <select value={props.sortBy} onChange={props.handleChange}>
+                    <option value="">None</option>
+                        {optionsRegion}
+                </select>
+            </label>
+            <label>
+                Filter By Country:
+                    <select value={props.sortBy} onChange={props.handleChange}>
+                    <option value="">None</option>
                         {optionsCountry}
                 </select>
             </label>
