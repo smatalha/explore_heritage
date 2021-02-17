@@ -48,6 +48,56 @@ nav ul li {
 .navbar-nav > li > a:hover {
   border-top: 0.1875rem solid var(--primary-white);
 }
+/************************************ Header*************************************/
+
+.header-wraper {
+  position: relative;
+  opacity: 0.8;
+  background: url(./background.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+.main-info {
+  display: flex;
+  position: absolute;
+  top: 0;
+  bottom: 50%;
+  right: 50%;
+  left: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  text-align: center;
+  font-family: "Roboto Condensed", sans-serif;
+}
+.main-info h1 {
+  color: var(--primary-dark);
+  /* color: var(--primary-orange); */
+  text-transform: uppercase;
+  font-size: 2.1rem !important;
+}
+.header_ul li {
+  width: 50px;
+  height: 50px;
+  border: 2px solid var(--primary-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s linear;
+  margin: 0 10px;
+}
+.btn-main-offer {
+  border: 1px solid var(--primary-dark-grey);
+  text-transform: uppercase;
+  border-radius: 0;
+  padding: 0.625rem 0.75rem 0.75rem 0.75rem;
+  color: var(--primary-dark);
+  /* color: var(--primary-orange); */
+  margin-top: 0.7rem;
+  font-size: 0.9rem;
+}
 /* .App {
   text-align: center;
 } */

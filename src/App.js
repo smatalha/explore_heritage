@@ -3,8 +3,8 @@ import './App.css';
 import NavBar from './Components/NavBar';
 import { Route, Switch } from "react-router-dom";
 // import About from './Components/About';
-import Home from './Components/Home';
-// import Header from './Components/Header';
+// import Home from './Components/Home';
+import Header from './Components/Header';
 // import Login from './Components/Auth';
 import LoginForm from "./Components/LoginForm";
 import WishList from './Components/WishList';
@@ -92,9 +92,6 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <NavBar />
-
-          {/* <Header/> */}
-          {/* <Home/> */}
           <Switch>
             <Route path='/login' component={LoginForm} />
             <Route path='/wishlist' component={WishList} />
@@ -104,7 +101,7 @@ class App extends React.Component {
             <Route path='/sites' render={(routerProps) => <SitesCollection sites={this.state.sites}{...routerProps} />} />
             {/* <Route path='/sites' render={() => <SitesContainer />} /> */}
             {/* <Route path='/about' render={() => <About />} /> */}
-            <Route path='/' component={Home} />
+            <Route path='/' component={Header} />
           </Switch>
           {/* <footer className='footer'>©2020 EXHeritage</footer> */}
         </header>

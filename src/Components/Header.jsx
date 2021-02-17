@@ -1,17 +1,21 @@
-import React from 'react'
-// import { Header } from 'semantic-ui-react'
-import Image from "../cover_page1.png"
+import React from "react"
+import { Link } from 'react-router-dom';
 
 
-const HeaderImg = () => (
-    // <Header as='h2'>
-    <div className='ym-wrapper'>
-        <div className='header-banner'>
-            <img circular src={Image} alt="Heritage" id="header"/>
-            {/* <img circular src="https://i.insider.com/5d24516421a86104a0726044?width=1200&format=jpeg" alt="Heritage" id="header"/> */}
+
+const Header = () => {
+    return (
+        <div className="header-wraper">
+            <div className="main-info">
+                <ul className="header_ul">
+                    <h1>Welcome To Explore The Heritage</h1>
+                    <h2 >Lets Explore UNESCO World Heritages&nbsp;&nbsp;
+                            <Link smooth= {true} to="signUp" offset={-110} className="header-link" className= " btn-md btn-main-offer">SignUp</Link>
+                    </h2>
+                </ul>
+            </div>
         </div>
-    </div>
-    // </Header>
-)
+    )
+}
 
-export default HeaderImg;
+export default Header;
