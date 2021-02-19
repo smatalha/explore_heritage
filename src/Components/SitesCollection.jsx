@@ -67,19 +67,23 @@ class SitesCollection extends React.Component {
 
         return (
             <>
+            <div className="sitesCollection">
+                <div className="search_container">
                 <Search handleSearch={this.handleSearch} />
                 <Filter handleChange={this.handleChange} sites={sites} />
+                </div>
                 <div className="site-index">
                     <Switch>
                         <Route
                             exact path={`${match.path}`}
-                            // render={() => <> {displaySites.map(site => <SiteCard key={site.id} {...site} match={this.props.match} push={this.props.history.push} />)} </>}
+                            render={() => <> {displaySites.map(site => <SiteCard key={site.id} {...site} match={this.props.match} push={this.props.history.push} />)} </>}
                             />
                         <Route path={`${match.path}/:id`} render={routerProps => <SitePage {...routerProps} sites={sites}
                             handleChangeVisited={this.props.handleChangeVisited}
                         />} />
                     </Switch>
                 </div>
+            </div>
             </>
         );
     }
