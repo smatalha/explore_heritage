@@ -98,6 +98,31 @@ nav ul li {
   margin-top: 0.7rem;
   font-size: 0.9rem;
 }
+/************************************ SiteCard *************************************/
+.block2__grid {
+  display: inline-grid;
+  padding: 1rem;
+  grid-auto-rows: 270px;
+  grid-gap: 25px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  margin-top: 25px;
+}
+.site-card {
+  border-radius: 6px;
+  color: #fff;
+  position: relative;
+}
+.site-card__image {
+  border-radius: 6px;
+  font-size: 0;
+  line-height: 0;
+  overflow: hidden;
+  -webkit-transition: 0.8s ease-out;
+  -o-transition: 0.8s ease-out;
+  transition: 0.8s ease-out;
+  height: 100%;
+}
+
 /* .App {
   text-align: center;
 } */

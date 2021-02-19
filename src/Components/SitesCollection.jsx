@@ -73,7 +73,7 @@ class SitesCollection extends React.Component {
                     <Switch>
                         <Route
                             exact path={`${match.path}`}
-                            render={() => <> {displaySites.map(site => <SiteCard key={site.id} {...site} match={this.props.match} push={this.props.history.push} />)} </>}
+                            // render={() => <> {displaySites.map(site => <SiteCard key={site.id} {...site} match={this.props.match} push={this.props.history.push} />)} </>}
                             />
                         <Route path={`${match.path}/:id`} render={routerProps => <SitePage {...routerProps} sites={sites}
                             handleChangeVisited={this.props.handleChangeVisited}
